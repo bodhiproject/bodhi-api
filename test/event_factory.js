@@ -10,10 +10,9 @@ import Mocks from './mock/event_factory';
 Chai.use(ChaiAsPromised);
 const assert = Chai.assert;
 
-describe('EventFactory', function() {
-
-  describe('createTopic()', function() {
-    it('returns a tx receipt', function() {
+describe('EventFactory', () => {
+  describe('createTopic()', () => {
+    it('returns a tx receipt', () => {
       const res = Mocks.createTopic.result;
       assert.isTrue(ContractUtils.isTxReceipt(res));
     });

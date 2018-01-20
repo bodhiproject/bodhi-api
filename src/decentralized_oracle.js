@@ -7,7 +7,7 @@ import ContractMetadata from '../config/contract_metadata';
 const GAS_LIMIT_VOTE = 1500000;
 
 const DecentralizedOracle = {
-  vote: async function(args) {
+  async vote(args) {
     const {
       contractAddress, // address
       resultIndex, // number
@@ -35,11 +35,11 @@ const DecentralizedOracle = {
     return await contract.send('voteResult', {
       methodArgs: [resultIndex, botAmount],
       gasLimit: gasLimit || GAS_LIMIT_VOTE,
-      senderAddress: senderAddress,
+      senderAddress,
     });
   },
 
-  finalizeResult: async function(args) {
+  async finalizeResult(args) {
     const {
       contractAddress, // address
       senderAddress, // address
@@ -55,11 +55,11 @@ const DecentralizedOracle = {
     const contract = getContract(contractAddress);
     return await contract.send('finalizeResult', {
       methodArgs: [],
-      senderAddress: senderAddress,
+      senderAddress,
     });
   },
 
-  arbitrationEndBlock: async function(args) {
+  async arbitrationEndBlock(args) {
     const {
       contractAddress, // address
       senderAddress, // address
@@ -75,11 +75,11 @@ const DecentralizedOracle = {
     const contract = getContract(contractAddress);
     return await contract.call('arbitrationEndBlock', {
       methodArgs: [],
-      senderAddress: senderAddress,
+      senderAddress,
     });
   },
 
-  lastResultIndex: async function(args) {
+  async lastResultIndex(args) {
     const {
       contractAddress, // address
       senderAddress, // address
@@ -95,7 +95,7 @@ const DecentralizedOracle = {
     const contract = getContract(contractAddress);
     return await contract.call('lastResultIndex', {
       methodArgs: [],
-      senderAddress: senderAddress,
+      senderAddress,
     });
   },
 };

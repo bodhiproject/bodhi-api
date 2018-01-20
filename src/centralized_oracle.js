@@ -7,7 +7,7 @@ import ContractMetadata from '../config/contract_metadata';
 const GAS_LIMIT_SET_RESULT = 1500000;
 
 const CentralizedOracle = {
-  bet: async function(args) {
+  async bet(args) {
     const {
       contractAddress, // address
       index, // number
@@ -31,12 +31,12 @@ const CentralizedOracle = {
     const contract = getContract(contractAddress);
     return await contract.send('bet', {
       methodArgs: [index],
-      amount: amount,
-      senderAddress: senderAddress,
+      amount,
+      senderAddress,
     });
   },
 
-  setResult: async function(args) {
+  async setResult(args) {
     const {
       contractAddress, // address
       resultIndex, // number
@@ -57,11 +57,11 @@ const CentralizedOracle = {
     return await contract.send('setResult', {
       methodArgs: [resultIndex],
       gasLimit: GAS_LIMIT_SET_RESULT,
-      senderAddress: senderAddress,
+      senderAddress,
     });
   },
 
-  oracle: async function(args) {
+  async oracle(args) {
     const {
       contractAddress, // address
       senderAddress, // address
@@ -77,11 +77,11 @@ const CentralizedOracle = {
     const contract = getContract(contractAddress);
     return await contract.call('oracle', {
       methodArgs: [],
-      senderAddress: senderAddress,
+      senderAddress,
     });
   },
 
-  bettingStartBlock: async function(args) {
+  async bettingStartBlock(args) {
     const {
       contractAddress, // address
       senderAddress, // address
@@ -97,11 +97,11 @@ const CentralizedOracle = {
     const contract = getContract(contractAddress);
     return await contract.call('bettingStartBlock', {
       methodArgs: [],
-      senderAddress: senderAddress,
+      senderAddress,
     });
   },
 
-  bettingEndBlock: async function(args) {
+  async bettingEndBlock(args) {
     const {
       contractAddress, // address
       senderAddress, // address
@@ -117,11 +117,11 @@ const CentralizedOracle = {
     const contract = getContract(contractAddress);
     return await contract.call('bettingEndBlock', {
       methodArgs: [],
-      senderAddress: senderAddress,
+      senderAddress,
     });
   },
 
-  resultSettingStartBlock: async function(args) {
+  async resultSettingStartBlock(args) {
     const {
       contractAddress, // address
       senderAddress, // address
@@ -137,11 +137,11 @@ const CentralizedOracle = {
     const contract = getContract(contractAddress);
     return await contract.call('resultSettingStartBlock', {
       methodArgs: [],
-      senderAddress: senderAddress,
+      senderAddress,
     });
   },
 
-  resultSettingEndBlock: async function(args) {
+  async resultSettingEndBlock(args) {
     const {
       contractAddress, // address
       senderAddress, // address
@@ -157,7 +157,7 @@ const CentralizedOracle = {
     const contract = getContract(contractAddress);
     return await contract.call('resultSettingEndBlock', {
       methodArgs: [],
-      senderAddress: senderAddress,
+      senderAddress,
     });
   },
 };

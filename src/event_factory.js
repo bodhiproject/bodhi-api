@@ -6,11 +6,13 @@ import ContractMetadata from '../config/contract_metadata';
 
 const GAS_LIMIT_CREATE_TOPIC = 3500000;
 
-const contract = new Contract(Config.QTUM_RPC_ADDRESS, ContractMetadata.EventFactory.address, 
-  ContractMetadata.EventFactory.abi);
+const contract = new Contract(
+  Config.QTUM_RPC_ADDRESS, ContractMetadata.EventFactory.address,
+  ContractMetadata.EventFactory.abi,
+);
 
 const EventFactory = {
-  createTopic: async function(args) {
+  async createTopic(args) {
     const {
       oracleAddress, // address
       eventName, // string
@@ -48,12 +50,12 @@ const EventFactory = {
     }
 
     return await contract.send('createTopic', {
-      methodArgs: [oracleAddress, eventName, resultNames, bettingStartBlock, bettingEndBlock, resultSettingStartBlock, 
+      methodArgs: [oracleAddress, eventName, resultNames, bettingStartBlock, bettingEndBlock, resultSettingStartBlock,
         resultSettingEndBlock],
       gasLimit: GAS_LIMIT_CREATE_TOPIC,
-      senderAddress: senderAddress,
+      senderAddress,
     });
-  }
+  },
 };
 
 module.exports = EventFactory;

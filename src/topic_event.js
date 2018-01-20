@@ -5,7 +5,7 @@ import Config from '../config/config';
 import ContractMetadata from '../config/contract_metadata';
 
 const TopicEvent = {
-  withdrawWinnings: async function(args) {
+  async withdrawWinnings(args) {
     const {
       contractAddress, // address
       senderAddress, // address
@@ -21,11 +21,11 @@ const TopicEvent = {
     const contract = getContract(contractAddress);
     return await contract.send('withdrawWinnings', {
       methodArgs: [],
-      senderAddress: senderAddress,
+      senderAddress,
     });
   },
 
-  totalQtumValue: async function(args) {
+  async totalQtumValue(args) {
     const {
       contractAddress, // address
       senderAddress, // address
@@ -41,11 +41,11 @@ const TopicEvent = {
     const contract = getContract(contractAddress);
     return await contract.call('totalQtumValue', {
       methodArgs: [],
-      senderAddress: senderAddress,
+      senderAddress,
     });
   },
 
-  totalBotValue: async function(args) {
+  async totalBotValue(args) {
     const {
       contractAddress, // address
       senderAddress, // address
@@ -61,11 +61,11 @@ const TopicEvent = {
     const contract = getContract(contractAddress);
     return await contract.call('totalBotValue', {
       methodArgs: [],
-      senderAddress: senderAddress,
+      senderAddress,
     });
   },
 
-  getFinalResult: async function(args) {
+  async getFinalResult(args) {
     const {
       contractAddress, // address
       senderAddress, // address
@@ -81,11 +81,11 @@ const TopicEvent = {
     const contract = getContract(contractAddress);
     return await contract.call('getFinalResult', {
       methodArgs: [],
-      senderAddress: senderAddress,
+      senderAddress,
     });
   },
 
-  status: async function(args) {
+  async status(args) {
     const {
       contractAddress, // address
       senderAddress, // address
@@ -101,11 +101,11 @@ const TopicEvent = {
     const contract = getContract(contractAddress);
     return await contract.call('status', {
       methodArgs: [],
-      senderAddress: senderAddress,
+      senderAddress,
     });
   },
 
-  didWithdraw: async function(args) {
+  async didWithdraw(args) {
     const {
       contractAddress, // address
       address, // address
@@ -125,11 +125,11 @@ const TopicEvent = {
     const contract = getContract(contractAddress);
     return await contract.call('didWithdraw', {
       methodArgs: [address],
-      senderAddress: senderAddress,
+      senderAddress,
     });
   },
 
-  calculateWinnings: async function(args) {
+  async calculateWinnings(args) {
     const {
       contractAddress, // address
       senderAddress, // address
@@ -145,7 +145,7 @@ const TopicEvent = {
     const contract = getContract(contractAddress);
     return await contract.call('calculateWinnings', {
       methodArgs: [],
-      senderAddress: senderAddress,
+      senderAddress,
     });
   },
 };

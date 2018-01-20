@@ -4,11 +4,13 @@ import { Contract } from 'qweb3';
 import Config from '../config/config';
 import ContractMetadata from '../config/contract_metadata';
 
-const contract = new Contract(Config.QTUM_RPC_ADDRESS, ContractMetadata.BodhiToken.address, 
-  ContractMetadata.BodhiToken.abi);
+const contract = new Contract(
+  Config.QTUM_RPC_ADDRESS, ContractMetadata.BodhiToken.address,
+  ContractMetadata.BodhiToken.abi,
+);
 
 const BodhiToken = {
-  approve: async function(args) {
+  async approve(args) {
     const {
       spender, // address
       value, // number (Botoshi)
@@ -27,11 +29,11 @@ const BodhiToken = {
 
     return await contract.send('approve', {
       methodArgs: [spender, value],
-      senderAddress: senderAddress,
+      senderAddress,
     });
   },
 
-  allowance: async function(args) {
+  async allowance(args) {
     const {
       owner, // address
       spender, // address
@@ -50,11 +52,11 @@ const BodhiToken = {
 
     return await contract.call('allowance', {
       methodArgs: [owner, spender],
-      senderAddress: senderAddress,
+      senderAddress,
     });
   },
 
-  balanceOf: async function(args) {
+  async balanceOf(args) {
     const {
       owner, // address
       senderAddress, // address
@@ -69,7 +71,7 @@ const BodhiToken = {
 
     return await contract.call('balanceOf', {
       methodArgs: [owner],
-      senderAddress: senderAddress,
+      senderAddress,
     });
   },
 };

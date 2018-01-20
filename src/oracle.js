@@ -8,7 +8,7 @@ const ORACLE_CENTRALIZED = 'centralized';
 const ORACLE_DECENTRALIZED = 'decentralized';
 
 const Oracle = {
-  eventAddress: async function(args) {
+  async eventAddress(args) {
     const {
       contractAddress, // address
       oracleType, // string
@@ -28,11 +28,11 @@ const Oracle = {
     const oracle = getContract(oracleType, contractAddress);
     return await oracle.call('eventAddress', {
       methodArgs: [],
-      senderAddress: senderAddress,
+      senderAddress,
     });
   },
 
-  consensusThreshold: async function(args) {
+  async consensusThreshold(args) {
     const {
       contractAddress, // address
       oracleType, // string
@@ -52,11 +52,11 @@ const Oracle = {
     const oracle = getContract(oracleType, contractAddress);
     return await oracle.call('consensusThreshold', {
       methodArgs: [],
-      senderAddress: senderAddress,
+      senderAddress,
     });
   },
 
-  finished: async function(args) {
+  async finished(args) {
     const {
       contractAddress, // address
       oracleType, // string
@@ -76,7 +76,7 @@ const Oracle = {
     const oracle = getContract(oracleType, contractAddress);
     return await oracle.call('finished', {
       methodArgs: [],
-      senderAddress: senderAddress,
+      senderAddress,
     });
   },
 };

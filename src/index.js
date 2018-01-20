@@ -17,7 +17,7 @@ import CentralizedOracle from './centralized_oracle';
 import DecentralizedOracle from './decentralized_oracle';
 
 const server = restify.createServer({
-  name: 'bodhi-api'
+  name: 'bodhi-api',
 });
 
 // Set up CORS to allow request from a different server
@@ -27,7 +27,7 @@ const cors = corsMiddleware({
 server.pre(cors.preflight);
 server.use(cors.actual);
 server.use(restify.plugins.bodyParser({ mapParams: true }));
-server.on('after', function (req, res, route, err) {
+server.on('after', (req, res, route, err) => {
   if (route) {
     console.log(`${route.methods[0]} ${route.spec.path} ${res.statusCode}`);
   } else {
@@ -381,7 +381,7 @@ server.post('/last-result-index', (req, res, next) => {
 });
 
 /** Start API server */
-server.listen(8080, function() {
+server.listen(8080, () => {
   console.log('%s listening at %s', server.name, server.url);
 });
 

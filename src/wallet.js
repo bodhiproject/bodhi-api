@@ -6,7 +6,7 @@ import Config from '../config/config';
 const qClient = new Qweb3(Config.QTUM_RPC_ADDRESS);
 
 const Wallet = {
-  getAccountAddress: async function(args) {
+  async getAccountAddress(args) {
     const {
       accountName, // string
     } = args;
@@ -18,7 +18,7 @@ const Wallet = {
     return await qClient.getAccountAddress(accountName);
   },
 
-  listUnspent: async function() {
+  async listUnspent() {
     return await qClient.listUnspent();
   },
 };

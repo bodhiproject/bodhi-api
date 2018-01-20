@@ -5,7 +5,7 @@ import Config from '../config/config';
 import ContractMetadata from '../config/contract_metadata';
 
 const BaseContract = {
-  version: async function(args) {
+  async version(args) {
     const {
       contractAddress, // address
       senderAddress, // address
@@ -21,11 +21,11 @@ const BaseContract = {
     const contract = getContract(contractAddress);
     return await contract.call('version', {
       methodArgs: [],
-      senderAddress: senderAddress,
+      senderAddress,
     });
   },
 
-  resultIndex: async function(args) {
+  async resultIndex(args) {
     const {
       contractAddress, // address
       senderAddress, // address
@@ -41,11 +41,11 @@ const BaseContract = {
     const contract = getContract(contractAddress);
     return await contract.call('resultIndex', {
       methodArgs: [],
-      senderAddress: senderAddress,
+      senderAddress,
     });
   },
-  
-  getBetBalances: async function(args) {
+
+  async getBetBalances(args) {
     const {
       contractAddress, // address
       senderAddress, // address
@@ -61,11 +61,11 @@ const BaseContract = {
     const contract = getContract(contractAddress);
     return await contract.call('getBetBalances', {
       methodArgs: [],
-      senderAddress: senderAddress,
+      senderAddress,
     });
   },
 
-  getVoteBalances: async function(args) {
+  async getVoteBalances(args) {
     const {
       contractAddress, // address
       senderAddress, // address
@@ -81,11 +81,11 @@ const BaseContract = {
     const contract = getContract(contractAddress);
     return await contract.call('getVoteBalances', {
       methodArgs: [],
-      senderAddress: senderAddress,
+      senderAddress,
     });
   },
 
-  getTotalBets: async function(args) {
+  async getTotalBets(args) {
     const {
       contractAddress, // address
       senderAddress, // address
@@ -101,11 +101,11 @@ const BaseContract = {
     const contract = getContract(contractAddress);
     return await contract.call('getTotalBets', {
       methodArgs: [],
-      senderAddress: senderAddress,
+      senderAddress,
     });
   },
 
-  getTotalVotes: async function(args) {
+  async getTotalVotes(args) {
     const {
       contractAddress, // address
       senderAddress, // address
@@ -121,7 +121,7 @@ const BaseContract = {
     const contract = getContract(contractAddress);
     return await contract.call('getTotalVotes', {
       methodArgs: [],
-      senderAddress: senderAddress,
+      senderAddress,
     });
   },
 };
