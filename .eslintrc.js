@@ -16,41 +16,28 @@ module.exports = {
     "consistent-return": 0,
     "max-len": [2,
       {
-        "code": 400
+        "tabWidth": 2,
+        "code": 120
       }
     ],
     "import/no-dynamic-require": 0,
     "import/prefer-default-export": 0,
     "no-console": 0,
-    "no-use-before-define": ["error",
+    "no-use-before-define": [2,
       {
         "functions": true,
         "classes": false
       }
     ],
-    "no-param-reassign": ["error",
+    "no-unused-vars": [2,
       {
-        "props": true,
-        "ignorePropertyModificationsFor": ["poolAction"]
-      }
-    ],
-    "no-unused-vars": ["error",
-      {
-        "args": "none", // "all" for everything
+        "args": "all",
         "caughtErrors": "none"
       }
     ],
-    "class-methods-use-this": [0,
-      {
-        "exceptMethods": ["foo"] // Not effective since it's 0
-      }
+    "class-methods-use-this": [0
     ],
-    "no-param-reassign": ["error",
-      {
-        "props": false
-      }
-    ],
-    "object-property-newline": ["error",
+    "object-property-newline": [2,
       {
         "allowMultiplePropertiesPerLine": false
       }
