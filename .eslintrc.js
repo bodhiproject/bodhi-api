@@ -16,12 +16,9 @@ module.exports = {
     "consistent-return": 0,
     "max-len": [2,
       {
-        "tabWidth": 2,
         "code": 120
       }
     ],
-    "import/no-dynamic-require": 0,
-    "import/prefer-default-export": 0,
     "no-console": 0,
     "no-use-before-define": [2,
       {
@@ -39,7 +36,7 @@ module.exports = {
     ],
     "object-property-newline": [2,
       {
-        "allowMultiplePropertiesPerLine": false
+        "allowAllPropertiesOnSameLine": true
       }
     ]
   }
