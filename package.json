@@ -28,7 +28,7 @@
     "moment": "^2.19.3",
     "qweb3": "^0.4.0",
     "restify": "^6.3.4",
-    "restify-cors-middleware": "^1.0.1",
+    "restify-cors-middleware": "^1.1.0",
     "web3-utils": "^1.0.0-beta.26"
   },
   "devDependencies": {
@@ -36,6 +36,9 @@
     "babel-preset-env": "^1.6.1",
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
+    "eslint": "^4.16.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
     "mocha": "^4.1.0"
   },
   "author": "bodhi.network",
