@@ -24,9 +24,11 @@ const Blockchain = {
   },
 
   async searchLogs(args) {
-    let {
+    const {
       fromBlock, // number
       toBlock, // number
+    } = args;
+    let {
       addresses, // string array
       topics, // string array
     } = args;
