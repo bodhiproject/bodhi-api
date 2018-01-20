@@ -13,6 +13,8 @@ module.exports = {
     }
   },
   "rules": {
+    "class-methods-use-this": [0
+    ],
     "consistent-return": 0,
     "max-len": [2,
       {
@@ -32,12 +34,12 @@ module.exports = {
         "caughtErrors": "none"
       }
     ],
-    "class-methods-use-this": [0
-    ],
     "object-property-newline": [2,
       {
         "allowAllPropertiesOnSameLine": true
       }
+    ],
+    "prefer-destructuring": [0
     ]
   }
 };
