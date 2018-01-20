@@ -15,11 +15,11 @@ const Wallet = {
       throw new TypeError('accountName needs to be defined');
     }
 
-    return await qClient.getAccountAddress(accountName);
+    return qClient.getAccountAddress(accountName);
   },
 
   async listUnspent() {
-    return await qClient.listUnspent();
+    return qClient.listUnspent();
   },
 };
 

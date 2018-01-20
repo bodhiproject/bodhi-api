@@ -4,6 +4,10 @@ import { Contract } from 'qweb3';
 import Config from '../config/config';
 import ContractMetadata from '../config/contract_metadata';
 
+function getContract(contractAddress) {
+  return new Contract(Config.QTUM_RPC_ADDRESS, contractAddress, ContractMetadata.TopicEvent.abi);
+}
+
 const TopicEvent = {
   async withdrawWinnings(args) {
     const {
@@ -19,7 +23,7 @@ const TopicEvent = {
     }
 
     const contract = getContract(contractAddress);
-    return await contract.send('withdrawWinnings', {
+    return contract.send('withdrawWinnings', {
       methodArgs: [],
       senderAddress,
     });
@@ -39,7 +43,7 @@ const TopicEvent = {
     }
 
     const contract = getContract(contractAddress);
-    return await contract.call('totalQtumValue', {
+    return contract.call('totalQtumValue', {
       methodArgs: [],
       senderAddress,
     });
@@ -59,7 +63,7 @@ const TopicEvent = {
     }
 
     const contract = getContract(contractAddress);
-    return await contract.call('totalBotValue', {
+    return contract.call('totalBotValue', {
       methodArgs: [],
       senderAddress,
     });
@@ -79,7 +83,7 @@ const TopicEvent = {
     }
 
     const contract = getContract(contractAddress);
-    return await contract.call('getFinalResult', {
+    return contract.call('getFinalResult', {
       methodArgs: [],
       senderAddress,
     });
@@ -99,7 +103,7 @@ const TopicEvent = {
     }
 
     const contract = getContract(contractAddress);
-    return await contract.call('status', {
+    return contract.call('status', {
       methodArgs: [],
       senderAddress,
     });
@@ -123,7 +127,7 @@ const TopicEvent = {
     }
 
     const contract = getContract(contractAddress);
-    return await contract.call('didWithdraw', {
+    return contract.call('didWithdraw', {
       methodArgs: [address],
       senderAddress,
     });
@@ -143,15 +147,11 @@ const TopicEvent = {
     }
 
     const contract = getContract(contractAddress);
-    return await contract.call('calculateWinnings', {
+    return contract.call('calculateWinnings', {
       methodArgs: [],
       senderAddress,
     });
   },
 };
-
-function getContract(contractAddress) {
-  return new Contract(Config.QTUM_RPC_ADDRESS, contractAddress, ContractMetadata.TopicEvent.abi);
-}
 
 module.exports = TopicEvent;

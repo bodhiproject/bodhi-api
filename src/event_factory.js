@@ -49,7 +49,7 @@ const EventFactory = {
       throw new TypeError('senderAddress needs to be defined');
     }
 
-    return await contract.send('createTopic', {
+    return contract.send('createTopic', {
       methodArgs: [oracleAddress, eventName, resultNames, bettingStartBlock, bettingEndBlock, resultSettingStartBlock,
         resultSettingEndBlock],
       gasLimit: GAS_LIMIT_CREATE_TOPIC,

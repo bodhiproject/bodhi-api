@@ -27,7 +27,7 @@ const BodhiToken = {
       throw new TypeError('senderAddress needs to be defined');
     }
 
-    return await contract.send('approve', {
+    return contract.send('approve', {
       methodArgs: [spender, value],
       senderAddress,
     });
@@ -50,7 +50,7 @@ const BodhiToken = {
       throw new TypeError('senderAddress needs to be defined');
     }
 
-    return await contract.call('allowance', {
+    return contract.call('allowance', {
       methodArgs: [owner, spender],
       senderAddress,
     });
@@ -69,7 +69,7 @@ const BodhiToken = {
       throw new TypeError('senderAddress needs to be defined');
     }
 
-    return await contract.call('balanceOf', {
+    return contract.call('balanceOf', {
       methodArgs: [owner],
       senderAddress,
     });

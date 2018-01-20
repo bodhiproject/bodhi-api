@@ -6,6 +6,10 @@ import ContractMetadata from '../config/contract_metadata';
 
 const GAS_LIMIT_VOTE = 1500000;
 
+function getContract(contractAddress) {
+  return new Contract(Config.QTUM_RPC_ADDRESS, contractAddress, ContractMetadata.DecentralizedOracle.abi);
+}
+
 const DecentralizedOracle = {
   async vote(args) {
     const {
@@ -32,7 +36,7 @@ const DecentralizedOracle = {
     // If gasLimit is not specified, we need to make sure the vote succeeds in the event this vote will surpass the
     // consensus threshold and will require a higher gas limit.
     const contract = getContract(contractAddress);
-    return await contract.send('voteResult', {
+    return contract.send('voteResult', {
       methodArgs: [resultIndex, botAmount],
       gasLimit: gasLimit || GAS_LIMIT_VOTE,
       senderAddress,
@@ -53,7 +57,7 @@ const DecentralizedOracle = {
     }
 
     const contract = getContract(contractAddress);
-    return await contract.send('finalizeResult', {
+    return contract.send('finalizeResult', {
       methodArgs: [],
       senderAddress,
     });
@@ -73,7 +77,7 @@ const DecentralizedOracle = {
     }
 
     const contract = getContract(contractAddress);
-    return await contract.call('arbitrationEndBlock', {
+    return contract.call('arbitrationEndBlock', {
       methodArgs: [],
       senderAddress,
     });
@@ -93,15 +97,11 @@ const DecentralizedOracle = {
     }
 
     const contract = getContract(contractAddress);
-    return await contract.call('lastResultIndex', {
+    return contract.call('lastResultIndex', {
       methodArgs: [],
       senderAddress,
     });
   },
 };
-
-function getContract(contractAddress) {
-  return new Contract(Config.QTUM_RPC_ADDRESS, contractAddress, ContractMetadata.DecentralizedOracle.abi);
-}
 
 module.exports = DecentralizedOracle;

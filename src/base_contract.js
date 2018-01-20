@@ -4,6 +4,10 @@ import { Contract } from 'qweb3';
 import Config from '../config/config';
 import ContractMetadata from '../config/contract_metadata';
 
+function getContract(contractAddress) {
+  return new Contract(Config.QTUM_RPC_ADDRESS, contractAddress, ContractMetadata.BaseContract.abi);
+}
+
 const BaseContract = {
   async version(args) {
     const {
@@ -19,7 +23,7 @@ const BaseContract = {
     }
 
     const contract = getContract(contractAddress);
-    return await contract.call('version', {
+    return contract.call('version', {
       methodArgs: [],
       senderAddress,
     });
@@ -39,7 +43,7 @@ const BaseContract = {
     }
 
     const contract = getContract(contractAddress);
-    return await contract.call('resultIndex', {
+    return contract.call('resultIndex', {
       methodArgs: [],
       senderAddress,
     });
@@ -59,7 +63,7 @@ const BaseContract = {
     }
 
     const contract = getContract(contractAddress);
-    return await contract.call('getBetBalances', {
+    return contract.call('getBetBalances', {
       methodArgs: [],
       senderAddress,
     });
@@ -79,7 +83,7 @@ const BaseContract = {
     }
 
     const contract = getContract(contractAddress);
-    return await contract.call('getVoteBalances', {
+    return contract.call('getVoteBalances', {
       methodArgs: [],
       senderAddress,
     });
@@ -99,7 +103,7 @@ const BaseContract = {
     }
 
     const contract = getContract(contractAddress);
-    return await contract.call('getTotalBets', {
+    return contract.call('getTotalBets', {
       methodArgs: [],
       senderAddress,
     });
@@ -119,15 +123,11 @@ const BaseContract = {
     }
 
     const contract = getContract(contractAddress);
-    return await contract.call('getTotalVotes', {
+    return contract.call('getTotalVotes', {
       methodArgs: [],
       senderAddress,
     });
   },
 };
-
-function getContract(contractAddress) {
-  return new Contract(Config.QTUM_RPC_ADDRESS, contractAddress, ContractMetadata.BaseContract.abi);
-}
 
 module.exports = BaseContract;

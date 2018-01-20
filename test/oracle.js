@@ -13,7 +13,6 @@ const assert = Chai.assert;
 const expect = Chai.expect;
 
 const CENTRALIZED = 'centralized';
-const DECENTRALIZED = 'decentralized';
 
 describe('Oracle', () => {
   const contractAddress = 'a5b27c03e76d4cf10928120439fa96181f07520c';

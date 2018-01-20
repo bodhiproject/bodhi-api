@@ -8,7 +8,7 @@ const qClient = new Qweb3(Config.QTUM_RPC_ADDRESS);
 
 const Blockchain = {
   async getBlockCount() {
-    return await qClient.getBlockCount();
+    return qClient.getBlockCount();
   },
 
   async getTransactionReceipt(args) {
@@ -20,7 +20,7 @@ const Blockchain = {
       throw new TypeError('transactionId needs to be defined');
     }
 
-    return await qClient.getTransactionReceipt(transactionId);
+    return qClient.getTransactionReceipt(transactionId);
   },
 
   async searchLogs(args) {
@@ -46,7 +46,7 @@ const Blockchain = {
       topics = [];
     }
 
-    return await qClient.searchLogs(fromBlock, toBlock, addresses, topics, ContractMetadata, true);
+    return qClient.searchLogs(fromBlock, toBlock, addresses, topics, ContractMetadata, true);
   },
 };
 

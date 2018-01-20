@@ -7,6 +7,20 @@ import ContractMetadata from '../config/contract_metadata';
 const ORACLE_CENTRALIZED = 'centralized';
 const ORACLE_DECENTRALIZED = 'decentralized';
 
+function getContract(oracleType, contractAddress) {
+  switch (oracleType) {
+    case ORACLE_CENTRALIZED: {
+      return new Contract(Config.QTUM_RPC_ADDRESS, contractAddress, ContractMetadata.CentralizedOracle.abi);
+    }
+    case ORACLE_DECENTRALIZED: {
+      return new Contract(Config.QTUM_RPC_ADDRESS, contractAddress, ContractMetadata.DecentralizedOracle.abi);
+    }
+    default: {
+      throw new TypeError('Invalid oracle type');
+    }
+  }
+}
+
 const Oracle = {
   async eventAddress(args) {
     const {
@@ -26,7 +40,7 @@ const Oracle = {
     }
 
     const oracle = getContract(oracleType, contractAddress);
-    return await oracle.call('eventAddress', {
+    return oracle.call('eventAddress', {
       methodArgs: [],
       senderAddress,
     });
@@ -50,7 +64,7 @@ const Oracle = {
     }
 
     const oracle = getContract(oracleType, contractAddress);
-    return await oracle.call('consensusThreshold', {
+    return oracle.call('consensusThreshold', {
       methodArgs: [],
       senderAddress,
     });
@@ -74,25 +88,11 @@ const Oracle = {
     }
 
     const oracle = getContract(oracleType, contractAddress);
-    return await oracle.call('finished', {
+    return oracle.call('finished', {
       methodArgs: [],
       senderAddress,
     });
   },
 };
-
-function getContract(oracleType, contractAddress) {
-  switch (oracleType) {
-    case ORACLE_CENTRALIZED: {
-      return new Contract(Config.QTUM_RPC_ADDRESS, contractAddress, ContractMetadata.CentralizedOracle.abi);
-    }
-    case ORACLE_DECENTRALIZED: {
-      return new Contract(Config.QTUM_RPC_ADDRESS, contractAddress, ContractMetadata.DecentralizedOracle.abi);
-    }
-    default: {
-      throw new TypeError('Invalid oracle type');
-    }
-  }
-}
 
 module.exports = Oracle;

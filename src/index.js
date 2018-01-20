@@ -1,6 +1,3 @@
-import _ from 'lodash';
-import moment from 'moment';
-import promise from 'bluebird';
 import restify from 'restify';
 import corsMiddleware from 'restify-cors-middleware';
 import Qweb3 from 'qweb3';
@@ -15,6 +12,16 @@ import TopicEvent from './topic_event';
 import Oracle from './oracle';
 import CentralizedOracle from './centralized_oracle';
 import DecentralizedOracle from './decentralized_oracle';
+
+function onRequestSuccess(res, result, next) {
+  res.send(200, { result });
+  next();
+}
+
+function onRequestError(res, err, next) {
+  res.send(500, { error: err.message });
+  next();
+}
 
 const server = restify.createServer({
   name: 'bodhi-api',
@@ -384,13 +391,3 @@ server.post('/last-result-index', (req, res, next) => {
 server.listen(8080, () => {
   console.log('%s listening at %s', server.name, server.url);
 });
-
-function onRequestSuccess(res, result, next) {
-  res.send(200, { result });
-  next();
-}
-
-function onRequestError(res, err, next) {
-  res.send(500, { error: err.message });
-  next();
-}
