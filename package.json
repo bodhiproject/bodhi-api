@@ -6,7 +6,8 @@
   "scripts": {
     "start": "babel-node src/index.js",
     "start:debug": "babel-node --inspect src/index.js",
-    "test": "mocha --compilers js:babel-core/register ./test/"
+    "test": "mocha --compilers js:babel-core/register ./test/",
+    "lint:fix": "eslint --fix -- src/. test/."
   },
   "repository": {
     "type": "git",
